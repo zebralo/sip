@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\Log;
 use PAMI\Client\Impl\ClientImpl;
 use PAMI\Message\Action\PingAction;
 use PAMI\Message\Action\OriginateAction;
@@ -25,7 +26,7 @@ class AsteriskService
         ];
 
         $this->client = new ClientImpl($options);
-        \Log::info('AMI Options',$this->client);
+        Log::info('AMI Options',$this->client);
         // $this->client->open();
     }
 
