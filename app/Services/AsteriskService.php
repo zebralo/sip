@@ -25,8 +25,8 @@ class AsteriskService
         ];
 
         $this->client = new ClientImpl($options);
-        \Log::info('AMI Options', $options);
-        $this->client->open();
+        \Log::info('AMI Options',$this->client);
+        // $this->client->open();
     }
 
     public function testConnection()
