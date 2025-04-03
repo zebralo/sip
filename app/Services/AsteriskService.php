@@ -25,13 +25,7 @@ class AsteriskService
         ];
 
         $this->client = new ClientImpl($options);
-        \Log::info('AMI Debugging', [
-            'host' => env('ASTERISK_AMI_HOST'),
-            'port' => env('ASTERISK_AMI_PORT'),
-            'username' => env('ASTERISK_AMI_USERNAME'),
-            'secret' => env('ASTERISK_AMI_SECRET')
-        ]);
-
+        \Log::info('AMI Options', $options);
         $this->client->open();
     }
 
