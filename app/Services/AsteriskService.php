@@ -31,8 +31,10 @@ class AsteriskService
     {
         $client = new ClientImpl($this->options);
         try {
-            $client->open();
-            return $client;
+            // $client->open();
+            // return $client;
+            Log::error("Error opening PAMI connection: " . $client);
+
         } catch (PAMIException $e) {
             Log::error("Error opening PAMI connection: " . $e->getMessage());
             return null;
