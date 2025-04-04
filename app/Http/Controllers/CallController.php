@@ -13,9 +13,7 @@ class CallController extends Controller
         $phone = $request->input('phone');
 
         // سجل الرقم في اللوج
-        Log::info('📞 Incoming call received', [
-            'phone' => $phone,
-        ]);
+        Log::info('📞 Incoming call attempt', ['all_request' => $request->all()]);
 
         // رجّع ريسبونس بسيط لتأكيد الاستلام
         return response()->json([
