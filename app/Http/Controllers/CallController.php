@@ -4,36 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CallController extends Controller
 {
     public function handleIncomingCall(Request $request)
     {
-        $phone = $request->input('phone'); // الرقم اللي جاي من الـPBX
+        $phone = $request->input('phone');
 
-        $customer = Customer::where('phone', 'like', '%' . $phone . '%')->first();
+        // سجل الرقم في اللوج
+        Log::info('📞 Incoming call received', [
+            'phone' => $phone,
+        ]);
 
-        if ($customer) {
-            // عميل موجود
-            $customer->phone = $phone;
-            $customer->count_updates = $customer->count_updates+1;
-            $customer->save();
-
-            return response()->json([
-                'status' => 'found',
-                'customer' => $customer
-            ]);
-        } else {
-            // عميل جديد
-            $customer = new Customer();
-            $customer->name = $phone;
-            $customer->phone = $phone;
-            $customer->save();
-            
-            return response()->json([
-                'status' => 'not_found',
-                'message' => 'Customer not found.'
-            ]);
-        }
+        // رجّع ريسبونس بسيط لتأكيد الاستلام
+        return response()->json([
+            'status' => 'test_mode',
+            'message' => 'Call received and logged.',
+            'phone' => $phone
+        ]);
     }
 }
