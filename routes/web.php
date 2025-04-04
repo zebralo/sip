@@ -23,4 +23,4 @@ Route::get('/ami-test', action: [AsteriskController::class, 'testAmi']);
 Route::post('/call', [AsteriskController::class, 'originateCall']);
 
 
-Route::post('/incoming-call', [CallController::class, 'handleIncomingCall']);
+Route::get('/incoming-call', [CallController::class, 'handleIncomingCall']);
