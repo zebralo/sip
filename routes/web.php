@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ami-test', [AsteriskController::class, 'testAmi']);
+Route::get('/ami-test', action: [AsteriskController::class, 'testAmi']);
 Route::post('/call', [AsteriskController::class, 'originateCall']);
 
 
