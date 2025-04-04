@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\AsteriskController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CallController;
+use App\Http\Controllers\AsteriskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::get('/', function () {
 
 Route::get('/ami-test', [AsteriskController::class, 'testAmi']);
 Route::post('/call', [AsteriskController::class, 'originateCall']);
+
+
+Route::post('/incoming-call', [CallController::class, 'handleIncomingCall']);
